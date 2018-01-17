@@ -1,0 +1,26 @@
+{% extends "motor/base.html" %}
+{% block tytul_h1 %}
+    Motocykl informacje
+{% endblock %}
+
+{% block tresc %}
+<h2>{{ object.name }}</h2>
+<table class="table">
+  <tr><td>Opis:</td><td>{{ object.description }}</td></tr>
+  <tr><td>Rozmiar:</td><td>{{ object.types }}</td></tr>
+  <tr><td>Cena:</td><td>{{ object.price }}</td></tr>
+  <tr><td>Dodano:</td><td>{{ object.date }}</td></tr>
+  <tr><td>Autor:</td><td>{{ object.author }}</td></tr>
+</table>
+<h3>Dodatki:</h3>
+<ol>
+{% for skl in addtionName %}
+    <li>{{ skl.nameOwn }} 
+	{% if skl.nameOwn != "" %}
+	({{ skl.brokenPart }})
+	{% endif %}</li>
+{% endfor %}
+</ol>
+{% endblock %}
+
+

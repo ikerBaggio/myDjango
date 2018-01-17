@@ -1,0 +1,39 @@
+{% extends "motor/base.html" %}
+{% block tytul_h1 %}
+    Dodaj motocykl
+{% endblock %}
+
+
+{% block tresc %}
+<form action="." method="post" id="pform">
+  {% csrf_token %}
+  <table class='dodaj-motocykl-form'>
+  {{ form.as_table }}
+</table>
+  <h3>Dodatki:</h3>
+  {{ addtionName.management_form }}
+  {{ addtionName.non_form_errors }}
+  <table class='dodatki-form'>
+	  {% for skl in addtionName %}
+	  {{ skl.id }}
+		<tr class="{{ addtionName.prefix }}">
+			<th>
+				<span>{{ forloop.counter }})</span>
+			</th>
+			<td>
+				{{ skl.nameOwn.errors }}
+				{{ skl.nameOwn.label_tag }} {{ skl.nameOwn }}
+			</td>
+			<td>
+				{{ skl.broken.errors }}
+				{{ skl.broken.label_tag }} {{ skl.broken }}
+			</td>
+			<td>
+				{{ skl.delete_part.label_tag }} {{ skl.delete_part }}
+			</td>
+		</tr>
+	  {% endfor %}
+  </table>
+  <br /><input type="submit" value="Zapisz">
+</form>
+{% endblock %}

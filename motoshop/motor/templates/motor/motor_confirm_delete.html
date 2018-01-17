@@ -1,0 +1,14 @@
+{% extends "motor/base.html" %}
+
+{% block tytul_h1 %}
+  Usuwanie motocyklu
+{% endblock %}
+
+{% block tresc %}
+<form action="." method="post">
+  {% csrf_token %}
+
+  <p>Czy na pewno chcesz usunąć motocykl: {{ object.name }}?</p>
+  <button type="submit">Usuń</button>
+</form>
+{% endblock %}

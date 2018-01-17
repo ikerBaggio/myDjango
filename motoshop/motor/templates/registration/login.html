@@ -1,0 +1,30 @@
+
+
+{% extends "motor/base.html" %}
+
+{% block tytul_h1 %}
+  Logowanie
+{% endblock %}
+
+{% block tresc %}
+	<form method="post" action=".">
+	  {% csrf_token %}
+	  <table class='login-form'>
+	  {{ form.as_table }}
+	  
+	  <tr>
+	   <th> </th>
+	   <td><input type="submit" value="Zaloguj się"/></td>
+	   </tr>
+	  </table>
+	</form>
+	<hr/>
+	<p>
+	  Nie masz konta?<br/>
+	  <a href="{% url 'registration_register' %}">Utwórz konto!</a>
+	</p>
+{% endblock %}
+
+{% block linki_ul %}
+{% endblock %}
+

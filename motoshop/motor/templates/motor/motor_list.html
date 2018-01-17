@@ -1,0 +1,25 @@
+{% extends "motor/base.html" %}
+
+{% block tytul_h1 %}
+  Lista motocykli
+{% endblock %}
+{% block tresc %}
+<table class="table">
+<tr><th>Lp.</th><th>Nazwa motocykla</th><th>Informacje o poście</th><th>Dostępne akcje</th></tr>
+{% for p in object_list %}
+<tr>
+  <td>{{ forloop.counter }}</td>
+  <td>{{ p.name }}</td>
+  <td>{{ p.author.username }} ({{ p.date }})</td>
+  <td>
+     <a href="{% url 'motor:info' p.id %}">Szczegóły</a>
+    {% if p.author.username == user.username or 'admin' == user.username %}
+      <a href="{% url 'motor:edytuj' p.id %}">Edytuj</a>
+      <a href="{% url 'motor:usun' p.id %}">Usuń</a>
+    {% endif %}
+  </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
+
